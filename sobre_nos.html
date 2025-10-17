@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Supermercados Pierim</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content container">
+            <a href="index.html" class="logo">
+                <img src="pierim_supermercados_logo.jpeg" alt="Logo Supermercados Pierim">
+                <span class="logo-text">Supermercados Pierim</span>
+            </a>
+            
+            <nav class="main-nav">
+                 <button class="menu-toggle" aria-label="Abrir Menu"><i class="fas fa-bars"></i></button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre_nos.html" class="active">Sobre Nós</a></li>
+                    <li><a href="setores.html">Nossos Setores</a></li>
+                    <li><a href="ofertas.html">Ofertas da Semana</a></li>
+                    <li><a href="trabalhe_conosco.html">Trabalhe Conosco</a></li>
+                    <li><a href="unidades.html">Unidades</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container sobre-nos">
+        <h1>Quem Somos</h1>
+
+        <div class="historia">
+            <img src="historia.pierim.png" alt="História do Supermercado Pierim" class="historia-img">
+            <p>
+                O <strong>Supermercado Pierim</strong> começou sua trajetória em 1966 com um barzinho de esquina na Rua Capitão Miguel Ferreira, na cidade de Mococa/SP, com o patriarca Pedro Giraldo. 
+                Logo após a iniciativa dele, o barzinho foi tornando-se famoso na cidade e em meados de 1972 os irmãos se uniram e abriram um pequeno armazém em frente ao antigo bar. 
+                Foi um sucesso total, o armazém vendia de tudo, inclusive lanches para grandes empresas de nossa cidade como a Metalúrgica Mococa.
+                <br><br>
+                Mais tarde, em 1977 começou o sonho de construção do Supermercado que se realizou em Maio de 1981. 
+                Em uma área de 2.000m², instalou-se o Supermercado Pierim Ltda, um dos primeiros grandes supermercados de nossa cidade.
+                <br><br>
+                No ano de 1992, o Supermercado Pierim sofreu seu primeiro aumento na estrutura física, ganhando mais 1.000m², 
+                e em 1999 ganhou mais 1.000m² com a sua segunda e última ampliação. Hoje a loja 1 conta com mais de 4.000m², 
+                distribuídos em 1.800m² de área de venda livre, 1.200m² de depósito e 1.000m² em estacionamento.
+                <br><br>
+                A partir de 2005 mais um sonho começou a se tornar realidade: a construção de uma segunda loja, com uma área total de 11.000m² bem localizada na entrada da cidade. 
+                Sonho esse que se realizou com a inauguração no dia 12 de abril de 2017. 
+                <br><br>
+                Em 2014, o Supermercado Pierim adquiriu mais uma loja, sendo a terceira da rede, e em 2021 inaugurou sua primeira filial fora da cidade de Mococa, 
+                na vizinha Casa Branca, somando 4 unidades.
+                <br><br>
+                Atualmente, o supermercado passou a usar o nome fantasia <strong>Pierim Supermercados</strong> e o slogan <em>Tradição e Confiança</em>, 
+                empregando mais de 460 funcionários e com planos de expansão para toda a região.
+            </p>
+        </div>
+
+        <section class="mvv">
+            <h2>Missão</h2>
+            <p>
+                Satisfação do cliente com atendimento adequado, qualidade e agilidade para oferecer os melhores serviços.
+                Proporcionar a melhor experiência aos nossos colaboradores, clientes e parceiros na arte de receber, surpreendendo com produtos de qualidade, preços acessíveis e excelência no atendimento.
+            </p>
+
+            <h2>Visão</h2>
+            <p>
+                Tornar-se referência no ramo supermercadista, ampliando nossa área de atuação.
+                Oferecer aos clientes qualidade nos produtos, bom atendimento e garantia de satisfação.
+            </p>
+
+            <h2>Valores</h2>
+            <ul>
+                <li>Bom atendimento</li>
+                <li>Integração</li>
+                <li>Menor custo de comercialização</li>
+                <li>Ética</li>
+                <li>Cidadania</li>
+                <li>Responsabilidade Socioambiental</li>
+                <li>Tradição e Confiança</li>
+            </ul>
+
+            <h2>Responsabilidade Ambiental</h2>
+            <p>
+                O Pierim Supermercado realiza ações de conscientização para o uso de sacolas retornáveis, evitando o consumo excessivo de plásticos.
+                Incentiva o uso de caixas de papelão recicláveis e realiza a coleta de embalagens e óleo de cozinha, garantindo o descarte correto por empresas especializadas.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Supermercados Pierim. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+ <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+
+    menuToggle.addEventListener('click', () => {
+        // Esta linha adiciona ou remove a classe 'active' no nav-list
+        navList.classList.toggle('active'); 
+    });
+</script>
+</body>
+</html>
+
+

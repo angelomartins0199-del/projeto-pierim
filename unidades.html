@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossas Unidades - Supermercados Pierim</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .unidades-section {
+            padding: 40px 0 80px;
+            background-color: var(--fundo-3d);
+            text-align: center;
+        }
+
+        .unidades-section h1 {
+            font-size: 2.8rem;
+            color: var(--vermelho-escuro);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .unidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .unidade-card {
+            background-color: var(--fundo-3d);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: left;
+            position: relative;
+            
+            /* Efeito Neumórfico (3D) */
+            box-shadow: 
+                10px 10px 20px rgba(0, 0, 0, 0.1),
+                -10px -10px 20px #FFFFFF;
+            transition: all 0.3s ease;
+        }
+
+        .unidade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                15px 15px 30px rgba(0, 0, 0, 0.15),
+                -15px -15px 30px #FFFFFF;
+        }
+
+        .unidade-card h2 {
+            font-size: 1.8rem;
+            color: var(--vermelho-principal);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--vermelho-principal);
+            padding-bottom: 5px;
+        }
+        
+        .unidade-card h2.nova {
+            color: #4CAF50; 
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .unidade-card h3 {
+            font-size: 1.2rem;
+            color: var(--texto-escuro);
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .info-item i {
+            color: var(--vermelho-escuro);
+            margin-right: 10px;
+            margin-top: 3px;
+            font-size: 1rem;
+        }
+        
+        .info-item strong {
+            display: block;
+            color: var(--texto-escuro);
+            font-weight: 500;
+        }
+
+        .info-item span {
+            display: block;
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 2px;
+        }
+        
+        .info-group {
+            border-top: 1px dashed #ccc;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .label-nova {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-bottom-left-radius: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* =================== ESTILOS MAPA GLOBAL =================== */
+        .global-map-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: var(--fundo-3d);
+        }
+
+        .global-map-section h2 {
+            font-size: 2rem;
+            color: var(--vermelho-escuro);
+            margin-bottom: 10px;
+        }
+
+        .global-map-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .map-container-global {
+            margin: 30px auto;
+            max-width: 1000px;
+            border-radius: 20px;
+            overflow: hidden;
+            /* Efeito Neumórfico (3D) para o container do mapa */
+            box-shadow: 
+                inset 5px 5px 15px rgba(0, 0, 0, 0.1),
+                inset -5px -5px 15px #FFFFFF;
+        }
+
+        .map-container-global iframe {
+            width: 100%;
+            height: 500px; /* Altura maior para o mapa global */
+            border: 0;
+            display: block;
+        }
+
+        .btn-mapa-externo {
+            margin-top: 20px;
+            /* O estilo .btn-primary já faz o 3D */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content container">
+            <a href="index.html" class="logo">
+                <img src="pierim_supermercados_logo.jpeg" alt="Logo Supermercados Pierim">
+                <span class="logo-text">Supermercados Pierim</span>
+            </a>
+            
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir Menu"><i class="fas fa-bars"></i></button>
+                <ul class="nav-list">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                    <li><a href="setores.html">Nossos Setores</a></li>
+                    <li><a href="ofertas.html">Ofertas da Semana</a></li>
+                    <li><a href="trabalhe_conosco.html">Trabalhe Conosco</a></li>
+                    <li><a href="unidades.html" class="active">Unidades</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="unidades-section">
+            <div class="container">
+                <h1>Nossas Unidades</h1>
+                <p class="subtitle">Encontre a loja Pierim mais próxima de você e venha nos visitar!</p>
+
+                <div class="unidades-grid">
+
+                    <div class="unidade-card">
+                        <h2>Unidade 1 - Mococa</h2>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Capitão Miguel Ferreira Nº 416, Vila Mariana</strong>
+                                <span>CEP: 13.730-335 - Mococa - SP</span>
+                            </div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Horário de Atendimento</h3>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Segunda a Quinta:** 08:00 às 21:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Sexta e Sábado:** 08:00 às 22:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Domingo:** 08:00 às 13:00</span></div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <h3>Horário de Entrega</h3>
+                            <div class="info-item"><i class="fas fa-shipping-fast"></i> <span>**Segunda a Quinta:** 08:00 às 18:00</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Sexta e Sábado:** Sem serviço</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Domingo:** Sem serviço</span></div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Contato</h3>
+                            <div class="info-item"><i class="fas fa-envelope"></i> <span>loja01@pierimsupermercados.com.br</span></div>
+                            <div class="info-item"><i class="fas fa-phone"></i> <span>(19) 3656-9966</span></div>
+                        </div>
+                    </div>
+
+                    <div class="unidade-card">
+                        <h2>Unidade 2 - Mococa</h2>
+
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Av. Mons. Demósthenes Paraná Br. Pontes nº 1712, Jardim Lavínia</strong>
+                                <span>CEP: 13.737-632 - Mococa - SP</span>
+                            </div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Horário de Atendimento</h3>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Segunda a Quinta:** 08:00 às 21:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Sexta e Sábado:** 08:00 às 22:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Domingo:** 08:00 às 13:00</span></div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <h3>Horário de Entrega</h3>
+                            <div class="info-item"><i class="fas fa-shipping-fast"></i> <span>**Segunda a Quinta:** 08:00 às 18:00</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Sexta e Sábado:** Sem serviço</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Domingo:** Sem serviço</span></div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Contato</h3>
+                            <div class="info-item"><i class="fas fa-envelope"></i> <span>atendimento@pierimsupermercados.com.br</span></div>
+                            <div class="info-item"><i class="fas fa-globe"></i> <span>Pierimonline.com.br</span></div>
+                            <div class="info-item"><i class="fas fa-phone"></i> <span>(19) 3666-7036</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="unidade-card">
+                        <h2>Unidade 3 - Mococa</h2>
+
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Rua Floriano Peixoto nº 140, Brás</strong>
+                                <span>CEP: 13.735-006 - Mococa - SP</span>
+                            </div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Horário de Atendimento</h3>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Segunda a Quinta:** 08:00 às 20:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Sexta e Sábado:** 08:00 às 21:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Domingo:** 08:00 às 13:00</span></div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <h3>Horário de Entrega</h3>
+                            <div class="info-item"><i class="fas fa-shipping-fast"></i> <span>**Segunda a Quinta:** 08:00 às 18:00</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Sexta e Sábado:** Sem serviço</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Domingo:** Sem serviço</span></div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Contato</h3>
+                            <div class="info-item"><i class="fas fa-envelope"></i> <span>atendimento3@pierimsupermercados.com.br</span></div>
+                            <div class="info-item"><i class="fas fa-phone"></i> <span>(19) 3656-9766</span></div>
+                        </div>
+                    </div>
+
+                    <div class="unidade-card">
+                        <h2>Unidade 4 - Cs. Branca</h2>
+
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Praça Rio Pardo nº 285, Centro</strong>
+                                <span>CEP: 13.700-000 - Casa Branca - SP</span>
+                            </div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Horário de Atendimento</h3>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Segunda a Quinta-feira:** 08:00 às 20:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Sexta e Sábado:** 08:00 às 21:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Domingo:** 08:00 às 13:00</span></div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <h3>Horário de Entrega</h3>
+                            <div class="info-item"><i class="fas fa-shipping-fast"></i> <span>**Segunda a Quinta-feira:** 08:00 às 18:00</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Sexta e Sábado:** Sem serviço</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Domingo:** Sem serviço</span></div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Contato</h3>
+                            <div class="info-item"><i class="fas fa-envelope"></i> <span>atendimento4@pierimsupermercados.com.br</span></div>
+                            <div class="info-item"><i class="fas fa-globe"></i> <span>Pierimonline.com.br</span></div>
+                            <div class="info-item"><i class="fas fa-phone"></i> <span>(19) 3671-6666</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="unidade-card">
+                        <span class="label-nova">NOVA</span>
+                        <h2 class="nova">Unidade 5 - Tambaú</h2>
+
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Av. José Gatto nº 271, Centro</strong>
+                                <span>CEP: 13.710-000 - Tambaú - SP</span>
+                            </div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Horário de Atendimento</h3>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Segunda a Quinta:** 08:00 às 20:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Sexta e Sábado:** 08:00 às 21:00</span></div>
+                            <div class="info-item"><i class="far fa-clock"></i> <span>**Domingo:** 08:00 às 13:00</span></div>
+                        </div>
+                        
+                        <div class="info-group">
+                            <h3>Horário de Entrega</h3>
+                            <div class="info-item"><i class="fas fa-shipping-fast"></i> <span>**Segunda a Quinta:** 08:00 às 18:00</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Sexta e Sábado:** Sem serviço</span></div>
+                            <div class="info-item"><i class="fas fa-times-circle"></i> <span>**Domingo:** Sem serviço</span></div>
+                        </div>
+
+                        <div class="info-group">
+                            <h3>Contato</h3>
+                            <div class="info-item"><i class="fas fa-envelope"></i> <span>atendimento5@pierimsupermercados.com.br</span></div>
+                            <div class="info-item"><i class="fas fa-phone"></i> <span>(19) 3673-5555</span></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <section class="global-map-section">
+            <div class="container">
+                <h2>Localização de Todas as Lojas</h2>
+                <p>Use o mapa abaixo para visualizar a área de cobertura das nossas unidades e planejar sua visita.</p>
+                <div class="map-container-global">
+                    <iframe 
+                        title="Mapa de todas as Unidades Pierim"
+                        src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d59402.88285922548!2d-47.02112885435228!3d-21.481062104870084!3m2!1i1024!2i768!4f13.1!2m1!1spierim!5e0!3m2!1spt-BR!2sbr!4v1760581903587!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        
+                    </iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/y4Nn8AUisGLeuuzSA" target="_blank" class="btn btn-primary btn-mapa-externo">
+                    <i class="fas fa-external-link-alt"></i> Ver Mapa Completo no Google Maps
+                    
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Supermercados Pierim. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

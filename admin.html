@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Admin Supermercados Pierim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        /* ===================================== */
+        /* ESTILOS BASE PARA O ADMIN/LOGIN       */
+        /* ===================================== */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Para garantir que o fundo ocupe 100% da tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0d1a3a; /* Cor de fundo principal */
+        }
+
+        /* ===================================== */
+        /* EFEITO DE FUNDO 3D E OVERLAY AZUL     */
+        /* ===================================== */
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1; /* Fica atrás do painel de login */
+            /* Efeito de gradiente azul que simula o fundo da imagem */
+            background: linear-gradient(135deg, #0f4c75 0%, #1b3a59 50%, #4682b4 100%);
+            opacity: 0.9;
+        }
+
+        .background-text {
+            /* Texto "PIERIM SUPERMERCADOS" em grande, com transparência e rotação */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-7deg); /* Rotação 3D sutil */
+            font-size: 15vw; /* Tamanho responsivo */
+            color: rgba(255, 255, 255, 0.1); /* Cor branca bem transparente */
+            font-weight: 900;
+            letter-spacing: 5px;
+            z-index: 2;
+        }
+
+        .background-slogan {
+            /* Slogan na parte inferior */
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2vw;
+            color: rgba(255, 255, 255, 0.2);
+            font-style: italic;
+            z-index: 2;
+        }
+
+
+        /* ===================================== */
+        /* PAINEL DE LOGIN (ESTRUTURA E 3D)      */
+        /* ===================================== */
+
+        .login-panel-wrapper {
+            position: relative;
+            z-index: 10; /* Fica na frente do fundo */
+            /* Efeito de sombra externa sutil para dar profundidade */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            /* Perspectiva para a ilusão 3D */
+            perspective: 1000px;
+        }
+
+        .login-panel {
+            width: 350px;
+            background: rgba(10, 20, 30, 0.85); /* Fundo escuro semitransparente */
+            border-radius: 12px;
+            padding: 40px 30px;
+            color: #fff;
+            /* Efeito 3D sutil: levanta e inclina um pouco o painel */
+            transform: rotateY(5deg) rotateX(2deg);
+            transition: transform 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Borda de vidro */
+            backdrop-filter: blur(5px); /* Efeito de vidro borrado no fundo */
+        }
+
+        /* Efeito ao passar o mouse para aprimorar o 3D */
+        .login-panel:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .login-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #e0f7fa; /* Cor clara */
+        }
+
+        /* ===================================== */
+        /* CAMPOS DE INPUT E BOTÃO               */
+        /* ===================================== */
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 12px 12px 40px; /* Padding à esquerda para o ícone */
+            background: rgba(255, 255, 255, 0.1); /* Fundo de input transparente */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+        }
+
+        .input-group input:focus {
+            border-color: #00bcd4; /* Azul ao focar */
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1em;
+        }
+
+        .show-password-toggle {
+            left: unset; /* Remove o alinhamento esquerdo padrão */
+            right: 15px; /* Alinha o cadeado à direita */
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .show-password-toggle:hover {
+            color: #00bcd4;
+        }
+
+        .password-tip {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: -10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: #e91e63; /* Cor de destaque (vermelho/rosa) */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-login:hover {
+            background: #d81b60;
+            transform: translateY(-2px); /* Efeito "pressionar" sutil */
+        }
+
+        /* ===================================== */
+        /* RODAPÉ DO PAINEL                      */
+        /* ===================================== */
+
+        .login-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .login-footer p {
+            font-size: 0.9em;
+            color: #00bcd4; /* Cor de destaque para a mensagem de boas-vindas */
+            font-style: italic;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container">
+        <h1 class="background-text">PIERIM SUPERMERCADOS</h1>
+        <p class="background-slogan">Tradição e Confiança !</p>
+    </div>
+
+    <div class="login-panel-wrapper">
+        <div class="login-panel">
+            <div class="login-header">
+                <img src="pierim_supermercados_logo (1).jpeg" alt="Logo Pierim" class="login-logo"> 
+                <h2 class="login-title">LOGIN</h2>
+            </div>
+            
+            <form action="processa_login.php" method="POST" class="login-form">
+                
+                <div class="input-group">
+                    <input type="text" id="usuario" name="usuario" required placeholder="USUÁRIO">
+                    <i class="fas fa-user"></i>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="senha" name="senha" required placeholder="SENHA">
+                    <i class="fas fa-lock show-password-toggle"></i> 
+                </div>
+
+                <p class="password-tip">* Clique no cadeado para ver a senha.</p>
+
+                <button type="submit" class="btn-login">LOGAR</button>
+            </form>
+
+            <div class="login-footer">
+                <p>Seja bem ao PIERIM SUPERMERCADOS admin!</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Funcionalidade de alternar visibilidade da senha (mantida no HTML para isolamento)
+        const passwordField = document.getElementById('senha');
+        const toggleIcon = document.querySelector('.show-password-toggle');
+
+        toggleIcon.addEventListener('click', () => {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            // Altera o ícone para feedback visual
+            toggleIcon.classList.toggle('fa-lock');
+            toggleIcon.classList.toggle('fa-unlock');
+        });
+    </script>
+</body>
+</html>

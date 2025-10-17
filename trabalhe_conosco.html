@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabalhe Conosco - Supermercados Pierim</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-content container">
+      <a class="logo" href="index.html">
+        <img src="pierim_supermercados_logo.jpeg" alt="Logo Pierim" />
+        <span class="logo-text">Supermercados Pierim</span>
+      </a>
+
+      <nav class="main-nav">
+        <button class="menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        <ul class="nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre_nos.html">Sobre Nós</a></li>
+          <li><a href="setores.html">Setores</a></li>
+          <li><a href="trabalhe_conosco.html" class="active">Trabalhe Conosco</a></li>
+          <li><a href="unidades.html" >Unidades</a></li>
+          <li><a href="admin.html">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-banner">
+    <div class="container">
+      <h1>Faça Parte da Nossa Equipe!</h1>
+      <p>Estamos em busca de pessoas dedicadas e apaixonadas pelo que fazem. Envie seu currículo e venha crescer com o Pierim!</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- SEÇÃO PROCESSO SELETIVO -->
+    <section class="processo-duvidas">
+      <div class="processo-card">
+        <h2>Processo Seletivo</h2>
+        <ul>
+          <li><span>1</span> Análise do currículo e dados enviados</li>
+          <li><span>2</span> Entrevista inicial por telefone ou presencial</li>
+          <li><span>3</span> Entrevista final com o gestor da área</li>
+          <li><span>4</span> Contratação e integração na equipe</li>
+        </ul>
+      </div>
+
+      <div class="duvidas-card">
+        <h2>Dúvidas Frequentes</h2>
+        <p><strong>Preciso ter experiência?</strong><br>Não necessariamente. Oferecemos treinamento para candidatos dedicados.</p>
+        <p><strong>Qual o prazo de resposta?</strong><br>Retornamos em até 15 dias úteis após o envio do currículo.</p>
+        <p><strong>Há vagas para PCD?</strong><br>Sim, temos programa de inclusão para pessoas com deficiência.</p>
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="formulario-trabalho" id="formulario">
+      <h2>Envie seu Currículo</h2>
+      <p>Preencha o formulário abaixo e anexe seu currículo. Analisaremos sua candidatura com cuidado.</p>
+
+      <form action="processa_curriculo.php" method="POST" enctype="multipart/form-data" class="form-trabalhe">
+       
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nome">Nome Completo *</label>
+            <input type="text" id="nome" name="nome" required placeholder="Seu nome completo" />
+          </div>
+
+          <div class="form-group">
+            <label for="cpf">CPF *</label>
+            <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14" />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required placeholder="exemplo@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone *</label>
+            <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999" />
+          </div>
+
+          <div class="form-group">
+            <label for="nascimento">Data de Nascimento *</label>
+            <input type="date" id="nascimento" name="nascimento" required />
+          </div>
+
+          <div class="form-group full">
+            <label for="endereco">Endereço *</label>
+            <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, bairro" />
+          </div>
+
+          <div class="form-group">
+            <label for="cidade">Cidade *</label>
+            <input type="text" id="cidade" name="cidade" required placeholder="Sua cidade" />
+          </div>
+
+          <div class="form-group">
+            <label for="estado">Estado *</label>
+            <input type="text" id="estado" name="estado" maxlength="2" required placeholder="UF" />
+          </div>
+
+          <div class="form-group">
+            <label for="cep">CEP *</label>
+            <input type="text" id="cep" name="cep" required placeholder="00000-000" />
+          </div>
+
+          <div class="form-group">
+            <label for="cargo">Cargo de Interesse *</label>
+            <input type="text" id="cargo" name="cargo" required placeholder="Ex: Repositor, Caixa, Açougueiro..." />
+          </div>
+
+          <div class="form-group full upload-box">
+            <label for="arquivo">Anexar Currículo *</label>
+            <div class="upload-area" onclick="document.getElementById('arquivo').click()">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <p><strong>Clique para anexar seu currículo</strong><br>Formatos aceitos: PDF, DOC, DOCX (máx. 5MB)</p>
+            </div>
+            <input type="file" id="arquivo" name="arquivo" accept=".pdf,.doc,.docx" required hidden />
+          </div>
+
+          <div class="form-group full">
+            <label for="mensagem">Mensagem (opcional)</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte-nos um pouco sobre você..."></textarea>
+          </div>
+        </div>
+
+
+                <button type="submit" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> Enviar Candidatura
+        </button>
+
+        <a href="editar_curriculo.html" class="btn btn-secondary">
+          <i class="fas fa-pen-to-square"></i> Editar meu Currículo
+        </a>
+
+      </form>
+
+    <div class="transparencia-salarial">
+        <span class="tag-transparencia">TRANSPARÊNCIA</span>
+        <h2>Relatórios de Transparência Salarial</h2>
+        <div class="relatorios-container">
+          <div class="cnpj-relatorios">
+            <p>CNPJ: 52.504.024/0001-81</p>
+            <ul>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja1-1-2024.pdf" target="_blank">Relatório de Transparência Salarial 1º semestre 2024</a></li>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja1-2-2024.pdf" target="_blank">Relatório de Transparência Salarial 2º semestre 2024</a></li>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja1-1-2025.pdf" target="_blank">Relatório de Transparência Salarial 1º semestre 2025</a></li>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja1-2-2025.pdf" target="_blank">Relatório de Transparência Salarial 2º semestre 2025</a></li>
+            </ul>
+          </div>
+          <div class="cnpj-relatorios">
+            <p>CNPJ: 52.504.024/0003-43</p>
+            <ul>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja2-1-2024.pdf" target="_blank">Relatório de Transparência Salarial 1º semestre 2024</a></li>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja2-2-2024.pdf" target="_blank">Relatório de Transparência Salarial 2º semestre 2024</a></li>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja2-1-2025.pdf" target="_blank">Relatório de Transparência Salarial 1º semestre 2025</a></li>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja2-2-2025.pdf" target="_blank">Relatório de Transparência Salarial 2º semestre 2025</a></li>
+            </ul>
+          </div>
+          <div class="cnpj-relatorios full-width-cnpj">
+            <p>CNPJ: 52.504.024/0004-24</p>
+            <ul>
+              <li><a href="https://www.pierimsupermercados.com.br/home/assets/pdf/rts-loja3-1-2025.pdf" target="_blank">Relatório de Transparência Salarial 1º semestre 2025</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 Supermercados Pierim. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    menuToggle.addEventListener('click', () => navList.classList.toggle('active'));
+
+    const fileInput = document.getElementById("arquivo");
+    const uploadArea = document.querySelector(".upload-area");
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        uploadArea.querySelector("p").innerHTML = `<strong>${fileInput.files[0].name}</strong> selecionado`;
+        uploadArea.classList.add("uploaded");
+      }
+    });
+  
+    
+    
+    const cpfInput = document.getElementById('cpf');
+
+    cpfInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, ''); 
+        
+        if (value.length > 11) {
+            value = value.substring(0, 11);
+        }
+
+        if (value.length > 9) {
+            value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
+        } else if (value.length > 6) {
+            value = value.replace(/^(\d{3})(\d{3})(\d{1,3})$/, '$1.$2.$3');
+        } else if (value.length > 3) {
+            value = value.replace(/^(\d{3})(\d{1,3})$/, '$1.$2');
+        }
+
+        e.target.value = value;
+    });
+
+    // ... Fim do código JavaScript ...
+</script>
+</body>
+</html>
